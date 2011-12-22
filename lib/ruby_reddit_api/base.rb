@@ -24,7 +24,6 @@ module Reddit
     # @return [Boolean] Login success or failure
     def login
       capture_session(self.class.post( "/api/login", {:body => {:user => @user, :passwd => @password}, :debug_output => @debug} ) )
-      puts @debug.inspect
       logged_in?
     end
 
