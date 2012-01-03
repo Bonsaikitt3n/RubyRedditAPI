@@ -34,6 +34,7 @@ module Reddit
         resp = self.class.post("/api/submit", {:body => {:title => title, :url => url, :uh => modhash, :sr => subreddit, :kind => "link"}, :headers => base_headers, :debug_output => @debug })
         resp.code == 200
       end
+      logger.info resp.inspect
     end
 
     # Search reddit
