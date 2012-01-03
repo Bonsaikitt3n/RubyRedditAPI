@@ -32,7 +32,7 @@ module Reddit
     def submit_story(title,url,subreddit)
       unless throttled?
         resp = self.class.post("/api/submit", {:body => {:title => title, :url => url, :uh => modhash, :sr => subreddit, :kind => "link"}, :headers => base_headers, :debug_output => @debug })
-        puts resp.errors
+        puts @debug.inspect
         resp.code == 200
       end
     end
