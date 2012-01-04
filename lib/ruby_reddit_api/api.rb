@@ -5,6 +5,7 @@ module Reddit
     attr_accessor :user, :password
     attr_reader :last_action, :debug
 
+
     def initialize(user=nil,password=nil, options={})
       @user     = user
       @password = password
@@ -32,7 +33,6 @@ module Reddit
     def submit_story(title,url,subreddit)
       unless throttled?
         resp = self.class.post("/api/submit", {:body => {:title => title, :url => url, :uh => modhash, :sr => subreddit, :kind => "link"}, :headers => base_headers, :debug_output => @debug })
-        puts @debug.inspect
         resp.code == 200
       end
     end
